@@ -1,5 +1,12 @@
 package DVDrental;
 
-public class Top {
+import javax.swing.JPanel;
+
+public class Top extends JPanel {
+	
+	public TopPanel(MainFrame frame) {
+		
+		
+	}
 
 }
