@@ -19,7 +19,12 @@ public class MainFrame extends JFrame {
 		cardLayout = new CardLayout();
 		cardPanel = new JPanel(cardLayout);
 		
-		//あああああ
+		cardPanel.add(new TopPanel(this), "TOP");
+		cardPanel.add(new DVDPanel(this), "DVD");
+		cardPanel.add(new MemberPanel(this), "MEMBER");
+		cardPanel.add(new RentPanel(this), "RENT");
+		cardPanel.add(new BiveBackPanel(this), "BIVEBACK");
+		
 		add(cardPanel);
 		setVisible(true);
 	}
