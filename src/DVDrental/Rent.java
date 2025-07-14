@@ -2,7 +2,6 @@ package DVDrental;
 	
 import java.awt.GridLayout;
 
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -37,3 +36,13 @@ import javax.swing.JTextField;
 	    	add(top);
     }
 }
+	//public static void rent(String memberid,String dvdcode) {
+		//try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
+			//	PreparedStatement ps = conn.prepareStatement("UPDATE dvd SET is_lent = true WHERE code = ?")){
+			//	ps.setString(1,dvdcode);
+			//	ps.executeUpdate();
+			//}catch(SQLException e){
+			//	e.printStackTrace();
+		//	}
+	//}
+
