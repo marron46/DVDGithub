@@ -8,9 +8,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Member extends JPanel{
+public class MemberPanel extends JPanel{
 	
-	public Member(MainFrame frame) {
+	public MemberPanel(MainFrame frame) {
 		
 		setLayout(new GridLayout(4,2));	//レイアウトに新しいの追加
 		//宣言
