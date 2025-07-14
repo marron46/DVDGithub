@@ -2,15 +2,14 @@ package DVDrental;
 	
 import java.awt.GridLayout;
 
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-	public class Rent extends JPanel{
-		public Rent(MainFrame frame) {
+	public class RentPanel extends JPanel{
+		public RentPanel(MainFrame frame) {
 	    	
 	    	setLayout (new GridLayout(3, 2));//レイアウトに新しいGridLayout(3, 2)
 	    	
@@ -22,7 +21,7 @@ import javax.swing.JTextField;
 
 	    	//↓DB実行
 	    	rental.addActionListener(e -> { 
-	    		DB.rent(memberIDField.getText(),DVDcodeField.getText());//getTextで入力した値を獲得する
+	    		DB.insertRent(memberIDField.getText(),DVDcodeField.getText());//getTextで入力した値を獲得する
 	        	JOptionPane.showMessageDialog(this,"レンタル処理が完了しました");
 	    	});
 
