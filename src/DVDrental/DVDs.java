@@ -17,12 +17,12 @@ public class DVDs extends JPanel{
 		JButton Button = new JButton("登録");
 		JButton TopButton = new JButton("TOP");
 		JTextField CodeField = new JTextField();
-		JTextField TitleFeild = new JTextField();
+		JTextField TitleField = new JTextField();
 		
 		//登録ボタンが押されたらコードとタイトル
 		Button.addActionListener(e->{
     		
-	    	DB.insertDVDs(CodeField.getText(),TitleFeild.getText());
+	    	DB.insertDVDs(CodeField.getText(),TitleField.getText());
 	    	JOptionPane.showMessageDialog(this, "DVDを登録しました。");
 	    	});
 	    	
@@ -33,7 +33,7 @@ public class DVDs extends JPanel{
 	    	add(new JLabel("コード"));
 	    	add(CodeField);
 	    	add(new JLabel("タイトル"));
-	    	add(TitleFeild);
+	    	add(TitleField);
 	    	add(Button);
 	    	add(TopButton);
 	}
