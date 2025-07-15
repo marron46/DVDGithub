@@ -18,7 +18,7 @@ public class DB {
 			}
 	}
 	
-	public static void insertDVD(String CodeField, String TitleField) {
+	public static void insertDVDs(String CodeField, String TitleField) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
 				PreparedStatement ps = conn.prepareStatement("INSERT INTO (CodeField,TitleField)VALUES(?,?)")){
 				ps.setString(1,CodeField);
