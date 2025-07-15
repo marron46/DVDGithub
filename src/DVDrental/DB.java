@@ -20,7 +20,7 @@ public class DB {
 	
 	public static void insertRent(String memberid,String DVDcode) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
-				PreparedStatement ps = conn.prepareStatement("UPDATE DVD SET is_lent = true WHERE code = ?")){
+				PreparedStatement ps = conn.prepareStatement("UPDATE dvd SET is_lent = true WHERE code = ?")){
 				ps.setString(1,DVDcode);
 				ps.executeUpdate();
 			}catch(SQLException e){
