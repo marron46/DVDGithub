@@ -7,11 +7,11 @@ import java.sql.SQLException;
 
 public class DB {
 	
-	public static void insertMember(String id, String name) {
+	public static void insertMember(String Id, String Name) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
 				PreparedStatement ps = conn.prepareStatement("INSERT INTO member(id,name)VALUES(?,?)")){
-				ps.setString(1, id);
-				ps.setString(2, name);
+				ps.setString(1, Id);
+				ps.setString(2, Name);
 				ps.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();
