@@ -39,6 +39,14 @@ public class DB {
 			}
 	}
 	
-	
+	public static void insertBackDVD(String DVDcode) {
+		try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
+				PreparedStatement ps = conn.prepareStatement("UPDATE book SET is_lent = false WHERE code = ?")) {
+			ps.setString(1, DVDcode);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
