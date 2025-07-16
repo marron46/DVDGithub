@@ -31,7 +31,7 @@ CREATE TABLE `dvd` (
   `Code` varchar(20) NOT NULL,
   `Title` varchar(100) NOT NULL,
   `Is_lent` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -42,7 +42,7 @@ CREATE TABLE `dvd` (
 CREATE TABLE `member` (
   `Id` varchar(20) NOT NULL,
   `Name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8mb4_general_ci;
 
 --
 -- ダンプしたテーブルのインデックス
