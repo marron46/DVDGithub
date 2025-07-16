@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class DB {
 	
 	private static final String URL = "jdbc:mysql://localhost/dvdrental";
-	private static final String USER = "";
+	private static final String USER = "root";
 	private static final String PASS = "";
 	
 	public static void insertMember(String Id, String Name) {
