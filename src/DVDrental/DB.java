@@ -7,6 +7,10 @@ import java.sql.SQLException;
 
 public class DB {
 	
+	private static final String URL = "jdbc:mysql://localhost/dvdrental";
+	private static final String USER = "";
+	private static final String PASS = "";
+	
 	public static void insertMember(String Id, String Name) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
 				PreparedStatement ps = conn.prepareStatement("INSERT INTO member(id,name)VALUES(?,?)")){
