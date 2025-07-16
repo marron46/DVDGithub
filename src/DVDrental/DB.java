@@ -13,7 +13,7 @@ public class DB {
 	
 	public static void insertMember(String Id, String Name) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
-				PreparedStatement ps = conn.prepareStatement("INSERT INTO member(id,name)VALUES(?,?)")){
+				PreparedStatement ps = conn.prepareStatement("INSERT INTO member(Id,Name)VALUES(?,?)")){
 				ps.setString(1, Id);
 				ps.setString(2, Name);
 				ps.executeUpdate();
@@ -24,7 +24,7 @@ public class DB {
 	
 	public static void insertDVDs(String CodeField, String TitleField) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
-				PreparedStatement ps = conn.prepareStatement("INSERT INTO (CodeField,TitleField)VALUES(?,?)")){
+				PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd(CodeField,TitleField)VALUES(?,?)")){
 				ps.setString(1,CodeField);
 				ps.setString(2,TitleField);
 				ps.executeUpdate();
