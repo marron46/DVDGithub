@@ -24,7 +24,7 @@ public class DB {
 	
 	public static void insertDVDs(String Code, String Title) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
-				PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd(Code,Title)VALUES(?,?)")){
+				PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd SET Is_lent(Code,Title)VALUES(?,?,false)")){
 				ps.setString(1,Code);
 				ps.setString(2,Title);
 				ps.executeUpdate();
@@ -35,7 +35,7 @@ public class DB {
 	
 	public static void insertRent(String memberid,String DVDcode) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
-				PreparedStatement ps = conn.prepareStatement("UPDATE dvd SET is_lent = true WHERE code = ?")){
+				PreparedStatement ps = conn.prepareStatement("UPDATE dvd SET Is_lent = true WHERE code = ?")){
 				ps.setString(1,DVDcode);
 				ps.executeUpdate();
 			}catch(SQLException e){
@@ -45,7 +45,7 @@ public class DB {
 	
 	public static void insertBackDVD(String DVDcode) {
 		try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
-				PreparedStatement ps = conn.prepareStatement("UPDATE book SET is_lent = false WHERE code = ?")) {
+				PreparedStatement ps = conn.prepareStatement("UPDATE dvd SET Is_lent = false WHERE code = ?")) {
 			ps.setString(1, DVDcode);
 			ps.executeUpdate();
 		} catch (SQLException e) {
