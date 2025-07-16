@@ -22,11 +22,11 @@ public class DB {
 			}
 	}
 	
-	public static void insertDVDs(String CodeField, String TitleField) {
+	public static void insertDVDs(String Code, String Title) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
-				PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd(CodeField,TitleField)VALUES(?,?)")){
-				ps.setString(1,CodeField);
-				ps.setString(2,TitleField);
+				PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd(Code,Title)VALUES(?,?)")){
+				ps.setString(1,Code);
+				ps.setString(2,Title);
 				ps.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();
