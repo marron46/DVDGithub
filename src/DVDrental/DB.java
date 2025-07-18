@@ -22,11 +22,12 @@ public class DB {
 			}
 	}
 	
-	public static void insertDVDs(String Code, String Title) {
+	public static void insertDVDs(String Code, String Title,String total) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
-				PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd(Code,Title,Is_lent)VALUES(?,?,false)")){
+				PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd(Code,Title,total,Is_lent)VALUES(?,?,?,false)")){
 				ps.setString(1,Code);
 				ps.setString(2,Title);
+				ps.setString(3,total);
 				ps.executeUpdate();
 			}catch(SQLException e) {
 				e.printStackTrace();
