@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class MemberPanel extends JPanel{
+public class MemberPanel extends JPanel {
 	
 	public MemberPanel(MainFrame frame) {
 		
@@ -22,8 +22,12 @@ public class MemberPanel extends JPanel{
 		//登録ボタンが押された時の処理
 		torokuButton.addActionListener(e ->{
 			DB.insertMember(idText.getText(),nameText.getText());
+			if(hantei(idText.getText())){
+				System.out.println("全角文字が含まれています");
+			}
 			JOptionPane.showMessageDialog(this, "会員登録が完了しました。");
-		});;
+		});
+		
 		
 		//TOPに戻るボタン
 		topButton.addActionListener(e -> frame.showPanel("TOP"));
@@ -34,6 +38,18 @@ public class MemberPanel extends JPanel{
 		add(nameText);
 		add(torokuButton);
 		add(topButton);
+		
+	}
+	
+	public static boolean hantei(String idText) {
+		
+		for(int i = 0; i < idText.length(); i++) {
+			char ch = idText.charAt(i);
+			if(ch < 0x0020 || ch > 0x007E) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
