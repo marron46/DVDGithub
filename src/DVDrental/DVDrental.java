@@ -7,5 +7,6 @@ public class DVDrental {
 		new MainFrame();
 		
 	}
+	
 
 }
