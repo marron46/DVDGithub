@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 
 public class MemberPanel extends JPanel {
 	
+	boolean hankaku = true;
+	
 	public MemberPanel(MainFrame frame) {
 		
 		setLayout(new GridLayout(4,2));	//レイアウトに新しいの追加
@@ -24,10 +26,16 @@ public class MemberPanel extends JPanel {
 			DB.insertMember(idText.getText(),nameText.getText());
 			if(hantei(idText.getText())){
 				System.out.println("全角文字が含まれています");
+				hankaku = false;
+			}else {
+				hankaku = true;
 			}
-			JOptionPane.showMessageDialog(this, "会員登録が完了しました。");
+			if(hankaku == true) {
+				JOptionPane.showMessageDialog(this, "会員登録が完了しました。");
+			}else {
+				JOptionPane.showMessageDialog(this, "全角文字が含まれています。");
+			}
 		});
-		
 		
 		//TOPに戻るボタン
 		topButton.addActionListener(e -> frame.showPanel("TOP"));

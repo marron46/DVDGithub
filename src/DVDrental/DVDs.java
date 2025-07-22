@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class DVDs extends JPanel{
+	
+	boolean hankaku = true;
+	
 	public DVDs(MainFrame frame) {
 		//レイアウトの作成
 		setLayout(new GridLayout(4,3));
@@ -24,8 +27,18 @@ public class DVDs extends JPanel{
 		Button.addActionListener(e->{
     		
 	    	DB.insertDVDs(CodeField.getText(),TitleField.getText(),totalField.getText());
-	    	JOptionPane.showMessageDialog(this, "DVDを登録しました。");
-	    	});
+	    	if(hantei(CodeField.getText())){
+				System.out.println("全角文字が含まれています");
+				hankaku = false;
+			}else {
+				hankaku = true;
+			}
+			if(hankaku == true) {
+				JOptionPane.showMessageDialog(this, "DVDを登録しました。");
+			}else {
+				JOptionPane.showMessageDialog(this, "全角文字が含まれています。");
+			}
+	    });
 	    	
 	    	//TOPに戻るボタン
 		TopButton.addActionListener(e->frame.showPanel("TOP"));
@@ -39,6 +52,17 @@ public class DVDs extends JPanel{
 	    	add(totalField);
 	    	add(Button);
 	    	add(TopButton);
+	}
+	
+	public static boolean hantei(String idText) {
+		
+		for(int i = 0; i < idText.length(); i++) {
+			char ch = idText.charAt(i);
+			if(ch < 0x0020 || ch > 0x007E) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
