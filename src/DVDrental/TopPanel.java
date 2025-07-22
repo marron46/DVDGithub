@@ -21,7 +21,7 @@ public class TopPanel extends JPanel {
 		rentButton.addActionListener(e -> frame.showPanel("RENT"));
 		
 		JButton bivebackButton = new JButton("返却処理");
-		bivebackButton.addActionListener(e -> frame.showPanel("RETURN"));
+		bivebackButton.addActionListener(e -> frame.showPanel("BIVEBACK"));
 		
 		add(bookButton);
         add(memberButton);

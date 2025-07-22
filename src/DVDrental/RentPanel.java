@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-	public class RentPanel extends JPanel{
+	/*public class RentPanel extends JPanel{
 		public RentPanel(MainFrame frame) {
 	    	
 	    	setLayout (new GridLayout(3, 2));//レイアウトに新しいGridLayout(3, 2)
@@ -35,7 +35,32 @@ import javax.swing.JTextField;
 	    	add(rental);
 	    	add(top);
     }
+}*/
+
+public class RentPanel extends JPanel {
+    public RentPanel(MainFrame frame) {
+        setLayout(new GridLayout(3, 2));
+        JTextField memberIdField = new JTextField();
+        JTextField dvdCodeField = new JTextField();
+        JButton lendBtn = new JButton("貸出");
+        JButton backBtn = new JButton("戻る");
+
+        lendBtn.addActionListener(e -> {
+            boolean success = DB.insertRent(memberIdField.getText(), dvdCodeField.getText());
+            if (success) {
+                JOptionPane.showMessageDialog(this, "貸出処理完了");
+            } else {
+                JOptionPane.showMessageDialog(this, "在庫がありません。貸出できません。", "エラー", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+        backBtn.addActionListener(e -> frame.showPanel("TOP"));
+
+        add(new JLabel("会員ID")); add(memberIdField);
+        add(new JLabel("DVDコード")); add(dvdCodeField);
+        add(lendBtn); add(backBtn);
+    }
 }
+
 	
 	//public static void insertRent(String memberid,String DVDcode) {
 		//try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
