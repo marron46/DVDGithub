@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DB {
 	
@@ -86,5 +88,24 @@ public class DB {
 			e.printStackTrace();
 		}
 	}*/
+	
+	public static ArrayList<String> listAll() {
+		ArrayList<String> list = new ArrayList<>();
+		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
+				Statement stmt = conn.createStatement();
+				ResultSet result = stmt.executeQuery("SELECT * FROM dvd")){
+			while (result.next()) {
+                String line = "コード: " + result.getString("code") +
+                              ", タイトル: " + result.getString("title") +
+                              ", 在庫: " + result.getInt("total");
+                list.add(line);
+            }
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+				
+			}
+		return list;
+	}
 
 }
