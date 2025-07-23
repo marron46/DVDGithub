@@ -51,7 +51,7 @@ public class DB {
 	public static boolean insertRent(String Id, String Code) {
         try (Connection conn = DriverManager.getConnection(URL,USER,PASS);
              PreparedStatement checkStmt = conn.prepareStatement("SELECT total FROM dvd WHERE code = ?");
-             PreparedStatement updateStmt = conn.prepareStatement("UPDATE dvd SET total = total - 1 WHERE code = ? AND total > 0")) {
+             PreparedStatement updateStmt = conn.prepareStatement("UPDATE dvd SET count = count + 1, total = total - 1 WHERE code = ? AND total > 0")) {
 
             checkStmt.setString(1, Code);
             ResultSet rs = checkStmt.executeQuery();
