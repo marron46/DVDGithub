@@ -1,35 +1,47 @@
 package DVDrental;
 
 import java.awt.BorderLayout;
-import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 
 public class zaiko extends JPanel{
+	DefaultListModel<String> listModel;
+    JList<String> zaikoList;
+    JButton reloadButton;
+    JTextArea text = new JTextArea();
 	public zaiko(MainFrame frame) {
         //レイアウト追加
         setLayout(new BorderLayout());
-        
-        //表示フィールド追加
         JButton topButton = new JButton("TOP");
-        JTextArea text = new JTextArea();
+        //表示フィールド追加
+        
+        
         //Listを作成string型
-        ArrayList<String> List = new ArrayList<>();
-        List = DB.listAll();
-        text.append(List+"\n");
-        /*for(int i = 0; i < List.size(); i++) {
-        	text.append(List+"\n");
-        }*/
-        //TOP戻るボタン
+        listModel = new DefaultListModel<>();
+        zaikoList = new JList<>(listModel);
+        reloadButton = new JButton("在庫一覧を表示");
+
+        reloadButton.addActionListener(e -> loadZaikoList());
         topButton.addActionListener(e -> frame.showPanel("TOP"));
-        //パネルに部品の追加
-        add(new JScrollPane(text), BorderLayout.CENTER);
+
+        add(reloadButton, BorderLayout.NORTH);
+        add(new JScrollPane(zaikoList), BorderLayout.CENTER);
         add(topButton, BorderLayout.SOUTH);
+        
     }
-	
+	private void loadZaikoList() {
+        listModel.clear();
+        List<String> list = DB.listAll();
+        for (String item : list) {
+            listModel.addElement(item);
+        }
+	}
 	
 }
