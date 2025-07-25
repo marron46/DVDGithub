@@ -9,11 +9,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DB {
-	
+	//DBアクセス＆ユーザー名とパスワード
 	private static final String URL = "jdbc:mysql://localhost/dvdrental";
 	private static final String USER = "root";
 	private static final String PASS = "";
 	
+	//会員の登録
 	public static void insertMember(String Id, String Name) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
 				PreparedStatement ps = conn.prepareStatement("INSERT INTO member(Id,Name)VALUES(?,?)")){
@@ -25,6 +26,7 @@ public class DB {
 			}
 	}
 	
+	//DVDの登録
 	public static void insertDVDs(String Code, String Title,String total) {
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
 				PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd(Code,Title,total)VALUES(?,?,?)")){
@@ -37,17 +39,7 @@ public class DB {
 			}
 	}
 	
-	/*public static void insertRent(String memberid,String DVDcode) {
-		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
-				PreparedStatement ps = conn.prepareStatement("UPDATE dvd SET Is_lent = true WHERE code = ?")){
-				ps.setString(1,DVDcode);
-				ps.executeUpdate();
-			}catch(SQLException e){
-				e.printStackTrace();
-			}
-		
-	}*/
-	
+	//DVDの貸出処理
 	public static boolean insertRent(String Id, String Code) {
         try (Connection conn = DriverManager.getConnection(URL,USER,PASS);
              PreparedStatement checkStmt = conn.prepareStatement("SELECT total FROM dvd WHERE code = ?");
@@ -70,6 +62,7 @@ public class DB {
         return false;
     }
 	
+	//DVDの返却処理
 	public static void insertBackDVD(String dvdCode) {
         try (Connection conn = DriverManager.getConnection(URL,USER,PASS);
              PreparedStatement stmt = conn.prepareStatement("UPDATE dvd SET total = total + 1 WHERE code = ?")) {
@@ -79,16 +72,8 @@ public class DB {
             e.printStackTrace();
         }
     }
-	/*public static void insertBackDVD(String DVDcode) {
-		try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
-				PreparedStatement ps = conn.prepareStatement("UPDATE dvd SET Is_lent = false WHERE code = ?")) {
-			ps.setString(1, DVDcode);
-			ps.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}*/
 	
+	//登録済みのDVDの一覧表示
 	public static ArrayList<String> listAll() {
 		ArrayList<String> list = new ArrayList<>();
 		try(Connection conn = DriverManager.getConnection(URL,USER,PASS);
