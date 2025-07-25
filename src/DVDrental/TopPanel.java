@@ -23,10 +23,14 @@ public class TopPanel extends JPanel {
 		JButton bivebackButton = new JButton("返却処理");
 		bivebackButton.addActionListener(e -> frame.showPanel("BIVEBACK"));
 		
+		JButton zaikoButton = new JButton("在庫一覧");
+		zaikoButton.addActionListener(e -> frame.showPanel("ZAIKO"));
+		
 		add(bookButton);
         add(memberButton);
         add(rentButton);
         add(bivebackButton);
+        add(zaikoButton);
 	}
 
 }
