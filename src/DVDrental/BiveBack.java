@@ -20,9 +20,14 @@ public class BiveBack extends JPanel{
 	
 	//DB返却処理
 	RentButton.addActionListener(e -> {
-		DB.insertBackDVD(CodeField.getText());
-		JOptionPane.showMessageDialog(this,"返却が完了しました。");//返却処理
+		boolean notLate = DB.insertBackDVD(CodeField.getText());
+	    if (notLate) {
+	        JOptionPane.showMessageDialog(this,"返却が完了しました。");
+	    } else {
+	        JOptionPane.showMessageDialog(this,"返却が完了しましたが、延滞しています。", "延滞", JOptionPane.WARNING_MESSAGE);
+	    }
 	});
+		
 	
 	TopButton.addActionListener(e -> Frame.showPanel("TOP"));//TOPに戻る
 	
