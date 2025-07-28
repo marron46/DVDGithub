@@ -167,12 +167,27 @@ public class DB {
 	        Statement st = conn.createStatement();
 	        ResultSet rs = st.executeQuery("SELECT title, count FROM dvd ORDER BY count DESC");
 
-	        int rank = 1;
+	        int rank = 0;
+	        int displayRank = 0;
+	        int prevCount = -1;
+	        int count = 0;
+	        
+	        
 	        while (rs.next()) {
+	        	rank++;
+	        	prevCount=count;
 	            String title = rs.getString("title");
-	            int count = rs.getInt("count");
-	            list.add(rank + "位: " + title + "（" + count + "回）");
-	            rank++;
+	            count = rs.getInt("count");
+	            
+	            if (count == prevCount) {
+	                displayRank = rank-1;
+	                prevCount = count;
+	                list.add(displayRank + "位: " + title + "（" + count + "回）");
+	            }else {
+	            
+	            	list.add(rank + "位: " + title + "（" + count + "回）");
+	            }
+	            
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
