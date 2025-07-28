@@ -14,7 +14,7 @@ public class Ranking extends JPanel{
     private JList<String> list;
     private JButton reloadButton;
 
-    public RankingPanel() {
+    public Ranking() {
         setLayout(new BorderLayout());
         model = new DefaultListModel<>();
         list = new JList<>(model);
@@ -28,7 +28,7 @@ public class Ranking extends JPanel{
 
     private void loadRanking() {
         model.clear();
-        List<String> ranking = DB.getRankingList();
+        List<String> ranking = DB.getRanking();
         for (String item : ranking) {
             model.addElement(item);
         }
