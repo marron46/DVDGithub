@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DB {
 	//DBアクセス＆ユーザー名とパスワード
@@ -158,6 +159,25 @@ public class DB {
 
 		}
 		return list;
+	}
+	
+	public static List<String> getRanking() {
+	    List<String> list = new ArrayList<>();
+	    try (Connection conn = DriverManager.getConnection(URL,USER,PASS);) {
+	        Statement st = conn.createStatement();
+	        ResultSet rs = st.executeQuery("SELECT title, count FROM dvd ORDER BY count DESC");
+
+	        int rank = 1;
+	        while (rs.next()) {
+	            String title = rs.getString("title");
+	            int count = rs.getInt("count");
+	            list.add(rank + "位: " + title + "（" + count + "回）");
+	            rank++;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return list;
 	}
 
 

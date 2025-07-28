@@ -13,17 +13,20 @@ public class Ranking extends JPanel{
 	private DefaultListModel<String> model;
     private JList<String> list;
     private JButton reloadButton;
+    JButton TopButton = new JButton("TOP");  //TOPボタン
 
-    public Ranking() {
+    public Ranking(MainFrame Frame) {
         setLayout(new BorderLayout());
         model = new DefaultListModel<>();
         list = new JList<>(model);
         reloadButton = new JButton("ランキングを表示");
 
         reloadButton.addActionListener(e -> loadRanking());
+        TopButton.addActionListener(e -> Frame.showPanel("TOP"));//TOPに戻る
 
         add(reloadButton, BorderLayout.NORTH);
         add(new JScrollPane(list), BorderLayout.CENTER);
+        add(TopButton, BorderLayout.SOUTH);
     }
 
     private void loadRanking() {
