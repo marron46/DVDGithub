@@ -26,11 +26,15 @@ public class TopPanel extends JPanel {
 		JButton zaikoButton = new JButton("在庫一覧");
 		zaikoButton.addActionListener(e -> frame.showPanel("ZAIKO"));
 		
+		JButton rankingButton = new JButton("ランキング");
+		rankingButton.addActionListener(e -> frame.showPanel("RANKING"));
+		
 		add(bookButton);
         add(memberButton);
         add(rentButton);
         add(bivebackButton);
         add(zaikoButton);
+        add(rankingButton);
 	}
 
 }

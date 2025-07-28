@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
 		cardPanel.add(new RentPanel(this), "RENT");
 		cardPanel.add(new BiveBack(this), "BIVEBACK");
 		cardPanel.add(new zaiko(this), "ZAIKO");
-		
+		cardPanel.add(new Ranking(this), "RANKING");		
 		add(cardPanel);
 		setVisible(true);
 	}
