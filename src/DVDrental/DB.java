@@ -161,6 +161,7 @@ public class DB {
 		return list;
 	}
 	
+	//ランキングシステム
 	public static List<String> getRanking() {
 	    List<String> list = new ArrayList<>();
 	    try (Connection conn = DriverManager.getConnection(URL,USER,PASS);) {
@@ -179,6 +180,7 @@ public class DB {
 	            String title = rs.getString("title");
 	            count = rs.getInt("count");
 	            
+	            //順位の重複判断
 	            if (count == prevCount) {
 	                displayRank = rank-1;
 	                prevCount = count;
